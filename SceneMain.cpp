@@ -124,7 +124,7 @@ SceneBase* SceneMain::update()
 			DrawFormatString(0, 60,  GetColor(255, 255, 255), "Hit : %d", m_getKeyCount );
 			pKey->setExist(false);
 
-			if (m_getKeyCount >= 5)
+			if (m_getKeyCount >= 10)
 			{
 				//return (new SceneGameClear);
 			}

@@ -17,14 +17,9 @@ public:
 	virtual void draw();
 
 private:
-
-	//グラフィックハンドル
-	int m_backHandle;
 	
-	int m_textX;
-	int m_textY;
 
-	int m_alpha;
+//	int m_alpha;
 
 	int m_frashTime;
 

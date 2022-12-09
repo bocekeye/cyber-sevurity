@@ -10,7 +10,7 @@ namespace
 	//プレイヤースピード
 	constexpr float kSpeed = 3.0f;
 
-	constexpr float kGravity = 0.8f;
+	constexpr float kGravity = 0.9f;
 }
 
 Player::Player() :

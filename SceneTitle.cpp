@@ -2,7 +2,7 @@
 #include "game.h"
 
 #include "SceneTitle.h"
-#include "SceneMain.h"
+#include "SceneExplain.h"
 
 namespace
 {
@@ -16,18 +16,15 @@ namespace
 	//表示ファイル
 	const char* const kBACKFilename = "Data/title.png";
 
-	constexpr int kFrashFrame = 150;   //点滅時間
-	constexpr int kInTextTime = 170;   //テキストを表示するまでの時間
+	constexpr int kFrashFrame = 100;   //点滅時間
+	constexpr int kInTextTime = 120;   //テキストを表示するまでの時間
 }
 
 
 SceneTitle::SceneTitle():
-	m_textX(0),
-	m_textY(0),
 	m_frashTime(0),
-	m_InTextTime(0),
-	m_alpha(0)
-
+	m_InTextTime(0)
+//	m_alpha(0)
 {
 	
 }
@@ -35,8 +32,6 @@ SceneTitle::SceneTitle():
 
 void SceneTitle::init()
 {
-	m_textX = Game::kScreenWidth / 2;
- 	m_textY = Game::kScreenHeight / 2;
 }
 
 SceneBase* SceneTitle::update()
@@ -54,7 +49,7 @@ SceneBase* SceneTitle::update()
 	if (padState & PAD_INPUT_1)
 	{
 //		SceneBase::FadeOut();
-		return(new SceneMain);
+		return(new SceneExplain);
 	}
 
 //	SceneBase::FadeUpdate();
@@ -75,7 +70,7 @@ void SceneTitle::draw()
 
 		if (m_frashTime < kFrashFrame)
 		{
-			DrawString(100, 300, kGuideText, 0x00ffff);
+			DrawString(100, 350, kGuideText, 0x00ffff);
 		}
 	}
 

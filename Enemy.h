@@ -31,6 +31,9 @@ public:
 	float getColHeight();
 
 
+
+
+
 private:
 
 	//グラフィックハンドル
@@ -45,5 +48,11 @@ private:
 	//移動
 	Vec2 m_vec;
 
-	double m_size;
+	double m_size;			//画像の大きさ
+	bool m_isChangeEnable;	//画像の大きさを変更する
+							//falseの場合  小さくする
+							//trueの場合   大きくする
+
+	int m_stopFrame;
+
 };
