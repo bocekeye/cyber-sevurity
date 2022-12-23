@@ -101,7 +101,7 @@ SceneBase* SceneMain::update()
 		}
 	}
 
-	DrawFormatString(0, 0, GetColor(255, 255, 255), "Hit : %d", m_getKeyCount);	//コインの取得枚数の表示
+	DrawFormatString(0, 0, GetColor(255, 255, 255), "取得枚数 : %d", m_getKeyCount);	//コインの取得枚数の表示
 
 	for (auto& pKey : m_pKey)
 	{
