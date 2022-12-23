@@ -115,7 +115,7 @@ SceneBase* SceneMain::update()
 
 			pKey->setExist(false);
 
-			if (m_getKeyCount >= 1)	//10–‡Žæ“¾‚µ‚½‚çSceneGameClear‚ÉˆÚ“®‚·‚é
+			if (m_getKeyCount >= 10)	//10–‡Žæ“¾‚µ‚½‚çSceneGameClear‚ÉˆÚ“®‚·‚é
 			{
 				return (new SceneGameClear);
 			}

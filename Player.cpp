@@ -137,7 +137,7 @@ bool Player::isCol(Key& key)
 	if (playerRight < enemyLeft) return false;
 	if (playerTop > enemyBottom) return false;
 	if (playerBottom < enemyTop) return false;
-
+	z
 	return true;
 }
 
