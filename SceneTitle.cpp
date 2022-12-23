@@ -16,19 +16,17 @@ namespace
 	//表示ファイル
 	const char* const kBACKFilename = "Data/title.png";
 
-	constexpr int kFrashFrame = 100;   //点滅時間
-	constexpr int kInTextTime = 120;   //テキストを表示するまでの時間
+	constexpr int kFrashFrame = 120;   //点滅時間
+	constexpr int kInTextTime = 140;   //テキストを表示するまでの時間
 }
 
 
 SceneTitle::SceneTitle():
 	m_frashTime(0),
 	m_InTextTime(0)
-//	m_alpha(0)
 {
 	
 }
-
 
 void SceneTitle::init()
 {
@@ -36,8 +34,6 @@ void SceneTitle::init()
 
 SceneBase* SceneTitle::update()
 {
-	//(this->*m_func)();
-
 	m_InTextTime++;
 	m_frashTime++;
 	if (m_frashTime >= kFrashFrame + 20)
@@ -48,32 +44,26 @@ SceneBase* SceneTitle::update()
 	int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
 	if (padState & PAD_INPUT_1)
 	{
-//		SceneBase::FadeOut();
 		return(new SceneExplain);
 	}
-
-//	SceneBase::FadeUpdate();
-
 	return this;
 }
 
 void SceneTitle::draw()
 {
-	SetFontSize(30);
+	SetFontSize(30);												//フォントサイズの変更
 
-	if (m_InTextTime > kInTextTime)
+	if (m_InTextTime > kInTextTime)									//文字の表示
 	{
 		DrawString(100, 100, kTitleText1, GetColor(255, 0, 255));
 		DrawString(100, 150, kTitleText2, GetColor(255, 0, 255));
 		DrawString(100, 200, kTitleText3, GetColor(255, 0, 255));
 		DrawString(100, 250, kTitleText4, GetColor(255, 0, 255));
 
-		if (m_frashTime < kFrashFrame)
+		if (m_frashTime < kFrashFrame)								//文字の点滅
 		{
 			DrawString(100, 350, kGuideText, 0x00ffff);
 		}
 	}
-
-//	SceneBase::FadeDraw();
 	
 }

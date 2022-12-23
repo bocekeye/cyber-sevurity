@@ -18,11 +18,7 @@ public:
 
 private:
 	
+	int m_frashTime;			//•¶Žš‚Ì“_–Å‚Ü‚Å‚ÌŽžŠÔ
 
-//	int m_alpha;
-
-	int m_frashTime;
-
-	int m_InTextTime;
-
+	int m_InTextTime;			//•¶Žš‚Ì•\Ž¦‚Ü‚Å‚ÌŽžŠÔ
 };

@@ -48,19 +48,16 @@ void Enemy::update()
 {
 	if (!m_isExist) return;
 
-
-
-	if (m_pos.x < 0.0f)
+	if (m_pos.x < 0.0f)						//画面外
 	{
 		m_isExist = false;
 	}
 	m_pos.x -= kSpeed;
 
-	
-	if (!m_isChangeEnable)
+	if (!m_isChangeEnable)					//falseは画像を小さくする
 	{
 		m_size -= 0.01;
-		if (m_size < 1.0f)
+		if (m_size < 1.0f)					//一定の大きさになったら縮小しない
 		{
 			m_size = 1.0f;
 			m_stopFrame++;
@@ -72,10 +69,10 @@ void Enemy::update()
 			
 		}
 	}
-	else //(m_isChangeEnable)
+	else //(m_isChangeEnable)				//trueは画像を大きくする
 	{
 		m_size += 0.01;
-		if (m_size > 2.0f)
+		if (m_size > 2.0f)					//一定の大きさになったら拡大しない
 		{
 			m_size = 2.0f;
 			m_stopFrame++;
@@ -96,9 +93,8 @@ void Enemy::draw()
 	int width = 0;
 	int height = 0;
 
-	GetGraphSize(m_hGraph, &width, &height);
+	GetGraphSize(m_hGraph, &width, &height);	//画像のサイズの取得
 	
-	//DrawGraph(static_cast<int>(m_pos.x), static_cast<int>(m_pos.y), m_hGraph, true);
 	DrawRotaGraph(static_cast<int>(m_pos.x) + width / 2, static_cast<int>(m_pos.y) + height / 2,
 					m_size , 0.0, m_hGraph, true, true);
 }

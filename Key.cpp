@@ -2,7 +2,7 @@
 #include "DxLib.h"
 namespace
 {
-	constexpr float kSpeed = 2.0f;
+	constexpr float kSpeed = 2.0f;		//コインの速さ
 }
 
 Key::Key() :
@@ -27,11 +27,9 @@ void Key::end()
 
 void Key::update()
 {
-	if (!m_isExist) return;
-	float tempX = 0;
-	float tempY = 0;
+	if (!m_isExist) return;			//存在しない場合
 
-	if (m_pos.x < 0.0f - 220.0f)
+	if (m_pos.x < 0.0f - 220.0f)	//画面外にある場合falseにする
 	{
 		m_isExist = false;
 	}
@@ -40,9 +38,9 @@ void Key::update()
 }
 void Key::draw()
 {
-	if (!m_isExist) return;
+	if (!m_isExist) return;			//存在しない場合
 
-	DrawRotaGraph(static_cast<int>(m_pos.x), static_cast<int>(m_pos.y),0.2,0.0 ,m_hGraph, true);
+	DrawRotaGraph(static_cast<int>(m_pos.x), static_cast<int>(m_pos.y),1,0.0 ,m_hGraph, false);		
 }
 
 float Key::getColWidth() //左上の座標の取得

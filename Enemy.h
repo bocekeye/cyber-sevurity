@@ -30,10 +30,6 @@ public:
 	float getColWidth();
 	float getColHeight();
 
-
-
-
-
 private:
 
 	//グラフィックハンドル
@@ -53,6 +49,6 @@ private:
 							//falseの場合  小さくする
 							//trueの場合   大きくする
 
-	int m_stopFrame;
+	int m_stopFrame;		//画像変更を止める時間
 
 };

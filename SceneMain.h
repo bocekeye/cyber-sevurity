@@ -3,7 +3,6 @@
 #include "SceneBase.h"
 #include "Vec2.h"
 #include "Player.h"
-#include "Map.h"
 #include "Enemy.h"
 #include "Key.h"
 
@@ -37,8 +36,6 @@ private:
 
 	int m_getKeyCount;		//キーのカウント
 
-
-	Map m_map;
 	std::vector <Enemy*> m_pEnemy;
 	Player* m_pPlayer;
 	std::vector <Key*> m_pKey;

@@ -7,14 +7,15 @@
 
 namespace
 {
-	const char* const kPlayerFilename = "Data/player.bmp";
-	const char* const kEnemyFilename = "Data/enemy.bmp";
-	const char* const kKeyFilename = "Data/koin.jpeg";
+	const char* const kPlayerFilename = "Data/player.bmp";	//プレイヤー
+	const char* const kEnemyFilename = "Data/enemy.bmp";	//エネミー
+	const char* const kKeyFilename = "Data/koin.jpeg";		//コイン
 
 	// 同時に登場する敵の最大数
 	constexpr int kEnemyMax = 30;
 	constexpr int kEnemyInterval = 50;
 
+	// 同時に登場するコインの最大数
 	constexpr int kKeyMax = 5;
 	constexpr int kKeyInterval = 300;
 }
@@ -67,8 +68,6 @@ void SceneMain::init()
 	m_pPlayer->init();
 	m_pPlayer->setHandle(m_hPlayer);
 
-	m_map.load();
-
 	m_enemyInterval = 0;
 }
 
@@ -77,12 +76,10 @@ void SceneMain::end()
 	DeleteGraph(m_hPlayer);
 	DeleteGraph(m_hEnemy);
 	DeleteGraph(m_hKey);
-	m_map.unload();
 }
 
 SceneBase* SceneMain::update()
 {
-	m_map.update();
 	m_pPlayer->update();
 	
 	for (auto& pEnemy : m_pEnemy)
@@ -94,16 +91,9 @@ SceneBase* SceneMain::update()
 		//当たり判定
 		if (m_pPlayer->isCol(*pEnemy))
 		{
-			DrawString(0, 30, "Hit", GetColor(255, 255, 255));
-
-			//m_pPlayer->setExist(false);
-			//return (new SceneGameOver);
+			m_pPlayer->setExist(false);
+			return (new SceneGameOver);		//プレイヤーがエネミーに当たるとSceneGameOverに移動する
 		}
-		else
-		{
-			DrawString(0, 45, "NoHit", GetColor(255, 255, 255));
-		}
-		
 		if (!pEnemy->isExist())
 		{
 			delete pEnemy;
@@ -111,29 +101,25 @@ SceneBase* SceneMain::update()
 		}
 	}
 
+	DrawFormatString(0, 0, GetColor(255, 255, 255), "Hit : %d", m_getKeyCount);	//コインの取得枚数の表示
+
 	for (auto& pKey : m_pKey)
 	{
 		if (!pKey) continue;
-
 		pKey->update();
+
 		//当たり判定
 		if (m_pPlayer->isCol(*pKey))
 		{
-			m_getKeyCount++;
+			m_getKeyCount++;			//コインを取得したらカウント１プラスする
 
-			DrawFormatString(0, 60,  GetColor(255, 255, 255), "Hit : %d", m_getKeyCount );
 			pKey->setExist(false);
 
-			if (m_getKeyCount >= 10)
+			if (m_getKeyCount >= 1)	//10枚取得したらSceneGameClearに移動する
 			{
-				//return (new SceneGameClear);
+				return (new SceneGameClear);
 			}
-		}
-		else
-		{
-			DrawString(0, 75, "NoHit", GetColor(255, 255, 255));
-		}
-		
+		}	
 		if (!pKey->isExist())
 		{
 			delete pKey;
@@ -150,11 +136,11 @@ SceneBase* SceneMain::update()
 			{
 				pEnemy = new Enemy;
 
-				pEnemy->init();
-				pEnemy->setHandle(m_hEnemy);
-				pEnemy->setExist(true);
-				Vec2 pos{Game::kScreenWidth,static_cast<float> (GetRand(479))};
-				pEnemy->setPos(pos);
+				pEnemy->init();														//初期化
+				pEnemy->setHandle(m_hEnemy);										//グラフィック
+				pEnemy->setExist(true);												
+				Vec2 pos{Game::kScreenWidth,static_cast<float> (GetRand(479))};		//ランダムな位置に生成
+				pEnemy->setPos(pos);												
 
 				break;
 			}
@@ -189,11 +175,12 @@ SceneBase* SceneMain::update()
 void SceneMain::draw()
 {
 	 
-	SetFontSize(20);
-	//m_map.draw();
-
+	SetFontSize(20);			
+	
+	//プレイヤーの描画
 	m_pPlayer->draw();
 
+	//エネミーの描画
 	for (auto& pEnemy : m_pEnemy)
 	{
 		if (pEnemy)
@@ -201,6 +188,7 @@ void SceneMain::draw()
 			pEnemy->draw();
 		}
 	}
+	//コインの描画
 	for (auto& pKey : m_pKey)
 	{
 		if (pKey)
@@ -209,7 +197,7 @@ void SceneMain::draw()
 		}
 	}
 
-	int num = 0;
+	/*int num = 0;
 
 	for (auto& pEnemy : m_pEnemy)
 	{
@@ -217,6 +205,6 @@ void SceneMain::draw()
 		{
 			num++;
 		}
-	}
-	DrawFormatString(0, 0, GetColor(255, 255, 255), "敵の数: %d", num);
+	}*/
+	//DrawFormatString(0, 0, GetColor(255, 255, 255), "敵の数: %d", num);
 }

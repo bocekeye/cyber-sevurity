@@ -57,9 +57,6 @@
     <ClCompile Include="Pad.cpp">
       <Filter>ソース ファイル\Util</Filter>
     </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy.cpp">
       <Filter>ソース ファイル\Object</Filter>
     </ClCompile>
@@ -100,9 +97,6 @@
     </ClInclude>
     <ClInclude Include="Pad.h">
       <Filter>ヘッダー ファイル\Util</Filter>
-    </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>ヘッダー ファイル\Object</Filter>

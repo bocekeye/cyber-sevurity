@@ -5,7 +5,7 @@
 class SceneGameClear : public SceneBase
 {
 public:
-	SceneGameClear() {};
+	SceneGameClear();
 
 	virtual ~SceneGameClear() {};
 
@@ -14,7 +14,8 @@ public:
 	virtual SceneBase* update()  override;
 	virtual void draw();
 
-
+private:
+	int m_timeCount;			//ƒV[ƒ“Ø‚è‘Ö‚¦—pŠÔ
 
 };
 

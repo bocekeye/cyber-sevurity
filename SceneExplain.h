@@ -12,6 +12,7 @@ public:
 
 private:
 
-
+	int m_frashTime;		//•¶Žš‚Ì“_–Å‚Ü‚Å‚ÌŽžŠÔ
+	int m_InTextTime;		//•¶Žš‚Ì•\Ž¦‚Ü‚Å‚ÌŽžŠÔ
 };
 

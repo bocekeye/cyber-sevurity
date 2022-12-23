@@ -10,6 +10,7 @@ namespace
 	//プレイヤースピード
 	constexpr float kSpeed = 3.0f;
 
+	//重力
 	constexpr float kGravity = 0.9f;
 }
 
